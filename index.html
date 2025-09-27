@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Akort - Guitar Tuner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2a5298">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎸 Online Akort</h1>
+            <p>Enstrümanınızı kolayca akort edin</p>
+        </header>
+
+        <main>
+            <!-- Akort Modları -->
+            <div class="tuning-selector">
+                <label for="tuning-mode">Enstrüman:</label>
+                <select id="tuning-mode">
+                    <option value="guitar">Gitar (E-A-D-G-B-E)</option>
+                    <option value="bass">Bas Gitar (E-A-D-G)</option>
+                    <option value="ukulele">Ukulele (G-C-E-A)</option>
+                    <option value="violin">Keman (G-D-A-E)</option>
+                </select>
+            </div>
+
+            <!-- Ana Akort Ekranı -->
+            <div class="tuner-display">
+                <div class="note-display">
+                    <div class="current-note" id="current-note">-</div>
+                    <div class="frequency" id="frequency">0 Hz</div>
+                </div>
+
+                <!-- Akort Meter -->
+                <div class="tuner-meter">
+                    <div class="meter-container">
+                        <div class="meter-scale">
+                            <div class="scale-mark sharp"></div>
+                            <div class="scale-mark"></div>
+                            <div class="scale-mark center"></div>
+                            <div class="scale-mark"></div>
+                            <div class="scale-mark flat"></div>
+                        </div>
+                        <div class="meter-needle" id="meter-needle"></div>
+                        <div class="meter-labels">
+                            <span>♭</span>
+                            <span></span>
+                            <span>●</span>
+                            <span></span>
+                            <span>♯</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Durum LED'leri -->
+                <div class="status-leds">
+                    <div class="led flat" id="led-flat">♭</div>
+                    <div class="led perfect" id="led-perfect">●</div>
+                    <div class="led sharp" id="led-sharp">♯</div>
+                </div>
+
+                <!-- Kontroller -->
+                <div class="controls">
+                    <button id="start-tuner" class="btn-primary">Akort Başlat</button>
+                    <button id="stop-tuner" class="btn-secondary" disabled>Durdur</button>
+                </div>
+            </div>
+
+            <!-- Hedef Notalar -->
+            <div class="target-notes">
+                <h3>Hedef Notalar:</h3>
+                <div class="notes-grid" id="notes-grid">
+                    <!-- JavaScript ile dinamik olarak doldurulacak -->
+                </div>
+            </div>
+
+            <!-- Ayarlar -->
+            <div class="settings">
+                <div class="setting-item">
+                    <label for="a4-frequency">A4 Frekansı (Hz):</label>
+                    <input type="range" id="a4-frequency" min="430" max="450" value="440" step="1">
+                    <span id="a4-value">440 Hz</span>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="sensitivity">Hassasiyet:</label>
+                    <input type="range" id="sensitivity" min="1" max="10" value="5" step="1">
+                    <span id="sensitivity-value">5</span>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Online Akort - Web Audio API kullanır</p>
+        </footer>
+    </div>
+
+    <script src="tuner.js"></script>
+</body>
+</html>
